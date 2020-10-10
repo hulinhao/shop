@@ -32,7 +32,7 @@
         <velocity.version>1.7</velocity.version>
     </properties>
 
-    <!-- 依赖声明 -->
+    <!-- 依赖声明 dependencyManagement保证父/子项目的依赖包版本一致 -->
     <dependencyManagement>
         <dependencies>
         

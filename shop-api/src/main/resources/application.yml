@@ -4,10 +4,10 @@ server:
     context-path: /
 spring:
   datasource:
-     # 火力卡
-    url: jdbc:mysql://106.14.93.187:3306/shop?autoReconnect=true&amp
+    #个人测试
+    url: jdbc:mysql://119.45.206.238:3306/shop?autoReconnect=true&amp
     username: root
-    password: root
+    password: personal@123!$
     driver-class-name: com.mysql.jdbc.Driver
     initialSize: 5
     minIdle: 5
