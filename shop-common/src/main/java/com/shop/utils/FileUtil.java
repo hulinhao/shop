@@ -18,7 +18,7 @@ public class FileUtil {
 
     public static String getApi(String fileName){
         try {
-            String path = FileUtil.class.getClassLoader().getResource("static").getPath();
+            String path = FileUtil.class.getClassLoader().getResource("api").getPath();
             String data = "";
             File file = new File(path+"/"+fileName);
             InputStreamReader r = new InputStreamReader(new FileInputStream(file));

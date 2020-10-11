@@ -11,5 +11,9 @@
 
     <artifactId>shop-system</artifactId>
 
+    <description>
+        shop后台管理模块
+    </description>
+
 
 </project>

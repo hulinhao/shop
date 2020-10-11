@@ -79,6 +79,13 @@
             <artifactId>ruoyi-generator</artifactId>
         </dependency>
 
+        <!-- api -->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>shop-api</artifactId>
+            <version>4.3.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>

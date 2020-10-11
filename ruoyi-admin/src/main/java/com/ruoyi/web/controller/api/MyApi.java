@@ -1,10 +1,10 @@
-package com.shop.controller;
+package com.ruoyi.web.controller.api;
 
+
+import com.alibaba.fastjson.JSONException;
 import com.shop.utils.FileUtil;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
