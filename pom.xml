@@ -216,6 +216,7 @@
         <!-- 店铺 -->
         <module>shop-api</module>
         <module>shop-common</module>
+        <module>shop-system</module>
 
     </modules>
     <packaging>pom</packaging>
