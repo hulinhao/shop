@@ -2,7 +2,7 @@ package com.ruoyi.web.controller.api;
 
 
 import com.alibaba.fastjson.JSONException;
-import com.shop.utils.FileUtil;
+import com.ruoyi.utils.FileUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;

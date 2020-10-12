@@ -1,4 +1,4 @@
-package com.shop.utils;
+package com.ruoyi.utils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

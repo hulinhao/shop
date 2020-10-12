@@ -85,6 +85,10 @@
             <artifactId>shop-api</artifactId>
             <version>4.3.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>shop-system</artifactId>
+        </dependency>
 
     </dependencies>
 

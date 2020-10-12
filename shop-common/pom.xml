@@ -43,16 +43,15 @@
             <version>2.0.2.RELEASE</version>
         </dependency>
 
-        <!-- jpa数据操作工具 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>RELEASE</version>
         </dependency>
 
-        <!-- mysql -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-common</artifactId>
         </dependency>
 
 

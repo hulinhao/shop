@@ -15,5 +15,12 @@
         shop后台管理模块
     </description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>shop-common</artifactId>
+        </dependency>
+    </dependencies>
+
 
 </project>

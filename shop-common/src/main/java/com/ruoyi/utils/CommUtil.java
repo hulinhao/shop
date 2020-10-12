@@ -1,4 +1,4 @@
-package com.shop.utils;
+package com.ruoyi.utils;
 
 /**
  * @author linhaoHu

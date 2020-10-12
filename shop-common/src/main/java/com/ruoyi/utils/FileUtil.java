@@ -1,4 +1,4 @@
-package com.shop.utils;
+package com.ruoyi.utils;
 
 import lombok.extern.slf4j.Slf4j;
 

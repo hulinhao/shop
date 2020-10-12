@@ -1,4 +1,4 @@
-package com.shop.utils;
+package com.ruoyi.utils;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
