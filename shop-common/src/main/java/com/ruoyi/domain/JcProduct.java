@@ -1,11 +1,11 @@
 package com.ruoyi.domain;
 
+import com.ruoyi.common.core.domain.JcBaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
-import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * 商品对象 jc_product
@@ -15,7 +15,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  */
 @Getter
 @Setter
-public class JcProduct extends BaseEntity
+public class JcProduct extends JcBaseEntity
 {
     private static final long serialVersionUID = 1L;
 

@@ -3,8 +3,7 @@ package com.ruoyi.mapper;
 import java.util.List;
 import com.ruoyi.domain.JcProduct;
 import org.apache.ibatis.annotations.Select;
-
-
+import tk.mybatis.mapper.common.Mapper;
 
 /**
  * 商品Mapper接口
@@ -12,7 +11,7 @@ import org.apache.ibatis.annotations.Select;
  * @author linhao Hu
  * @date 2020-10-12
  */
-public interface JcProductMapper
+public interface JcProductMapper extends Mapper<JcProduct>
 {
 
     @Select("SELECT * from jc_product where id = #{id}")

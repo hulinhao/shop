@@ -2,6 +2,7 @@ package com.ruoyi.service.impl;
 
 import java.util.List;
 import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.mapper.MapperTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.mapper.JcProductMapper;
@@ -20,7 +21,8 @@ public class JcProductServiceImpl implements IJcProductService
 {
     @Autowired
     private JcProductMapper jcProductMapper;
-
+    @Autowired
+    private MapperTest mapperTest;
     /**
      *
      * @return
@@ -28,11 +30,13 @@ public class JcProductServiceImpl implements IJcProductService
     @Override
     public JcProduct  getProduct(Long id){
 
-        // 这是Tkmybatis工具，不需要写sql和接口。直接继承Mapper就可以了
-        //List<JcProduct> list = jcProductMapper.selectAll();
+        // 这是Tkmybatis工具，不需要写sql和接口。直接继承Mapper就可以获取一些基本的查询方法
+        JcProduct j = new JcProduct();
+        j.setId(1L);
+        List<JcProduct> list = jcProductMapper.select(j);
 
-        //这是自定义sql 添加注解
-        return jcProductMapper.getJcProductById(id);
+        //这是自定义sql 添加注解方法
+        return jcProductMapper.selectJcProductById(id);
     }
 
     /**
