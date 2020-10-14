@@ -99,6 +99,11 @@
             <artifactId>ruoyi-system</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>shop-common</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
