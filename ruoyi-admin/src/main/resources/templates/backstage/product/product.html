@@ -23,17 +23,17 @@
                                 <input type="text" name="content"/>
                             </li>
                             <li>
-                                <label>类型：</label>
-                                <select name="type">
+                                <label>类型： </label>
+                                <select name="type" th:with="type=${@dict.getType('jc_product_type')}">
                                     <option value="">所有</option>
-                                    <option value="-1">代码生成请选择字典属性</option>
+                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
                                 </select>
                             </li>
                             <li>
-                                <label>商品状态 枚举值：0：正常 1：打折 2：售罄 3：下架：</label>
-                                <select name="status">
+                                <label>商品状态： </label>
+                                <select name="status" th:with="type=${@dict.getType('jc_product_status')}">
                                     <option value="">所有</option>
-                                    <option value="-1">代码生成请选择字典属性</option>
+                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
                                 </select>
                             </li>
                             <li>
@@ -67,6 +67,8 @@
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
         var editFlag = [[${@permission.hasPermi('system:product:edit')}]];
+        var statusDatas = [[${@dict.getType('jc_product_status')}]];
+        var typeDatas = [[${@dict.getType('jc_product_type')}]];
         var removeFlag = [[${@permission.hasPermi('system:product:remove')}]];
         var prefix = ctx + "system/product";
 
@@ -83,7 +85,7 @@
                 },
                 {
                     field: 'id',
-                    title: '商品状态 枚举值：0：正常 1：打折 2：售罄 3：下架',
+                    title: '主键id',
                     visible: false
                 },
                 {
@@ -100,15 +102,21 @@
                 },
                 {
                     field: 'type',
-                    title: '类型'
+                    title: '类型',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictLabel(typeDatas, value);
+                    }
                 },
                 {
                     field: 'status',
-                    title: '商品状态 枚举值：0：正常 1：打折 2：售罄 3：下架'
+                    title: '商品状态',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictLabel(statusDatas, value);
+                    }
                 },
                 {
                     field: 'remark',
-                    title: '商品状态 枚举值：0：正常 1：打折 2：售罄 3：下架'
+                    title: '备注'
                 },
                 {
                     title: '操作',
