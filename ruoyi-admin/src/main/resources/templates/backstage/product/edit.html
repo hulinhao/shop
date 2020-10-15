@@ -28,8 +28,8 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">类型：</label>
                 <div class="col-sm-8">
-                    <select name="type" class="form-control m-b" th:with="type=${@dict.getType('jc_product_type')}">
-                        <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                    <select name="type" class="form-control m-b" th:with="type1=${@dict.getType('jc_product_type')}">
+                        <option th:each="dict : ${type1}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}" th:selected="${dict.dictValue} eq *{type}" ></option>
                     </select>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <label class="col-sm-3 control-label">商品状态</label>
                 <div class="col-sm-8">
                     <div class="radio-box" th:each="dict : ${@dict.getType('jc_product_status')}">
-                        <input type="radio" th:id="${'status_' + dict.dictCode}" name="status" th:value="${dict.dictValue}" th:checked="${dict.default}">
+                        <input type="radio" th:id="${'status_' + dict.dictCode}" name="status" th:value="${dict.dictValue}" th:checked="${dict.dictValue} eq *{status}">
                         <label th:for="${'status_' + dict.dictCode}" th:text="${dict.dictLabel}"></label>
                     </div>
                 </div>
