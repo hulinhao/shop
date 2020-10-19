@@ -1,8 +1,9 @@
-package com.ruoyi.utils;
+package com.ruoyi.web.controller.api;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ruoyi.constant.ShopConstant;
 import com.ruoyi.domain.JcUser;
+import com.ruoyi.utils.Base64Util;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2020/10/14 17:49
  */
 @Slf4j
-public class BaseContoller {
+public class BaseApi {
 
     @Autowired(required = false)
     protected HttpServletRequest request;

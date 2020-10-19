@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.mapper.JcUserMapper">
+    
+    <resultMap type="JcUser" id="JcUserResult">
+        <result property="id"    column="id"    />
+        <result property="wxOpenid"    column="wx_openid"    />
+        <result property="wxNickname"    column="wx_nickName"    />
+        <result property="wxAvatarUrl"    column="wx_avatar_url"    />
+        <result property="wxGender"    column="wx_gender"    />
+        <result property="wxCountry"    column="wx_country"    />
+        <result property="wxProvince"    column="wx_province"    />
+        <result property="wxCity"    column="wx_city"    />
+        <result property="name"    column="name"    />
+        <result property="phone"    column="phone"    />
+        <result property="remark"    column="remark"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectJcUserVo">
+        select id, wx_openid, wx_nickName, wx_avatar_url, wx_gender, wx_country, wx_province, wx_city, name, phone, remark, create_time, update_time from jc_user
+    </sql>
+
+    <select id="selectJcUserList" parameterType="JcUser" resultMap="JcUserResult">
+        <include refid="selectJcUserVo"/>
+        <where>  
+            <if test="wxOpenid != null  and wxOpenid != ''"> and wx_openid = #{wxOpenid}</if>
+            <if test="wxNickname != null  and wxNickname != ''"> and wx_nickName like concat('%', #{wxNickname}, '%')</if>
+            <if test="wxAvatarUrl != null  and wxAvatarUrl != ''"> and wx_avatar_url = #{wxAvatarUrl}</if>
+            <if test="wxGender != null "> and wx_gender = #{wxGender}</if>
+            <if test="wxCountry != null  and wxCountry != ''"> and wx_country = #{wxCountry}</if>
+            <if test="wxProvince != null  and wxProvince != ''"> and wx_province = #{wxProvince}</if>
+            <if test="wxCity != null  and wxCity != ''"> and wx_city = #{wxCity}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="phone != null  and phone != ''"> and phone = #{phone}</if>
+        </where>
+    </select>
+    
+    <select id="selectJcUserById" parameterType="Long" resultMap="JcUserResult">
+        <include refid="selectJcUserVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertJcUser" parameterType="JcUser" useGeneratedKeys="true" keyProperty="id">
+        insert into jc_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="wxOpenid != null">wx_openid,</if>
+            <if test="wxNickname != null">wx_nickName,</if>
+            <if test="wxAvatarUrl != null">wx_avatar_url,</if>
+            <if test="wxGender != null">wx_gender,</if>
+            <if test="wxCountry != null">wx_country,</if>
+            <if test="wxProvince != null">wx_province,</if>
+            <if test="wxCity != null">wx_city,</if>
+            <if test="name != null">name,</if>
+            <if test="phone != null">phone,</if>
+            <if test="remark != null">remark,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="wxOpenid != null">#{wxOpenid},</if>
+            <if test="wxNickname != null">#{wxNickname},</if>
+            <if test="wxAvatarUrl != null">#{wxAvatarUrl},</if>
+            <if test="wxGender != null">#{wxGender},</if>
+            <if test="wxCountry != null">#{wxCountry},</if>
+            <if test="wxProvince != null">#{wxProvince},</if>
+            <if test="wxCity != null">#{wxCity},</if>
+            <if test="name != null">#{name},</if>
+            <if test="phone != null">#{phone},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateJcUser" parameterType="JcUser">
+        update jc_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="wxOpenid != null">wx_openid = #{wxOpenid},</if>
+            <if test="wxNickname != null">wx_nickName = #{wxNickname},</if>
+            <if test="wxAvatarUrl != null">wx_avatar_url = #{wxAvatarUrl},</if>
+            <if test="wxGender != null">wx_gender = #{wxGender},</if>
+            <if test="wxCountry != null">wx_country = #{wxCountry},</if>
+            <if test="wxProvince != null">wx_province = #{wxProvince},</if>
+            <if test="wxCity != null">wx_city = #{wxCity},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteJcUserById" parameterType="Long">
+        delete from jc_user where id = #{id}
+    </delete>
+
+    <delete id="deleteJcUserByIds" parameterType="String">
+        delete from jc_user where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

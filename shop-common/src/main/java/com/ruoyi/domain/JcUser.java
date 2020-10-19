@@ -7,29 +7,45 @@ import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
- * 用户管理对象 jc_user
+ * 用户对象 jc_user
  *
  * @author hlinhao Hu
- * @date 2020-10-14
+ * @date 2020-10-19
  */
 public class JcUser extends JcBaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** null */
+    /** $column.columnComment */
     private Long id;
 
-    /** wx_openId */
-    @Excel(name = "wx_openId")
+    /** $column.columnComment */
+    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
     private String wxOpenid;
 
-    /** 微信名字 */
-    @Excel(name = "微信名字")
-    private String wxName;
+    /** 微信昵称 */
+    @Excel(name = "微信昵称")
+    private String wxNickname;
 
     /** 微信图片地址 */
     @Excel(name = "微信图片地址")
-    private String avatarUrl;
+    private String wxAvatarUrl;
+
+    /** 性别：0：女 1：男 */
+    @Excel(name = "性别：0：女 1：男")
+    private Integer wxGender;
+
+    /** 国家 */
+    @Excel(name = "国家")
+    private String wxCountry;
+
+    /** 省份 */
+    @Excel(name = "省份")
+    private String wxProvince;
+
+    /** 城市 */
+    @Excel(name = "城市")
+    private String wxCity;
 
     /** 姓名 */
     @Excel(name = "姓名")
@@ -57,23 +73,59 @@ public class JcUser extends JcBaseEntity
     {
         return wxOpenid;
     }
-    public void setWxName(String wxName)
+    public void setWxNickname(String wxNickname)
     {
-        this.wxName = wxName;
+        this.wxNickname = wxNickname;
     }
 
-    public String getWxName()
+    public String getWxNickname()
     {
-        return wxName;
+        return wxNickname;
     }
-    public void setAvatarUrl(String avatarUrl)
+    public void setWxAvatarUrl(String wxAvatarUrl)
     {
-        this.avatarUrl = avatarUrl;
+        this.wxAvatarUrl = wxAvatarUrl;
     }
 
-    public String getAvatarUrl()
+    public String getWxAvatarUrl()
     {
-        return avatarUrl;
+        return wxAvatarUrl;
+    }
+    public void setWxGender(Integer wxGender)
+    {
+        this.wxGender = wxGender;
+    }
+
+    public Integer getWxGender()
+    {
+        return wxGender;
+    }
+    public void setWxCountry(String wxCountry)
+    {
+        this.wxCountry = wxCountry;
+    }
+
+    public String getWxCountry()
+    {
+        return wxCountry;
+    }
+    public void setWxProvince(String wxProvince)
+    {
+        this.wxProvince = wxProvince;
+    }
+
+    public String getWxProvince()
+    {
+        return wxProvince;
+    }
+    public void setWxCity(String wxCity)
+    {
+        this.wxCity = wxCity;
+    }
+
+    public String getWxCity()
+    {
+        return wxCity;
     }
     public void setName(String name)
     {
@@ -99,8 +151,12 @@ public class JcUser extends JcBaseEntity
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
                 .append("id", getId())
                 .append("wxOpenid", getWxOpenid())
-                .append("wxName", getWxName())
-                .append("avatarUrl", getAvatarUrl())
+                .append("wxNickname", getWxNickname())
+                .append("wxAvatarUrl", getWxAvatarUrl())
+                .append("wxGender", getWxGender())
+                .append("wxCountry", getWxCountry())
+                .append("wxProvince", getWxProvince())
+                .append("wxCity", getWxCity())
                 .append("name", getName())
                 .append("phone", getPhone())
                 .append("remark", getRemark())

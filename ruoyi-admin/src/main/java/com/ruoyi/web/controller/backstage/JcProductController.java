@@ -2,7 +2,7 @@ package com.ruoyi.web.controller.backstage;
 
 import java.util.List;
 
-import com.ruoyi.service.IJcProductService;
+import com.ruoyi.service.JcProductService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +33,7 @@ public class JcProductController extends BaseController
     private String prefix = "backstage/product";
 
     @Autowired
-    private IJcProductService jcProductService;
+    private JcProductService jcProductService;
 
     @RequiresPermissions("system:product:view")
     @GetMapping()

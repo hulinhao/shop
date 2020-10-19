@@ -9,7 +9,7 @@ import com.ruoyi.domain.JcProduct;
  * @author linhao Hu
  * @date 2020-10-12
  */
-public interface IJcProductService 
+public interface JcProductService
 {
 
 

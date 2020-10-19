@@ -8,7 +8,7 @@ import com.ruoyi.domain.JcUser;
  * @author linhao Hu
  * @date 2020/10/14 18:19
  */
-public interface JcUserService {
+public interface AppletService {
 
     JcUser login(JcUser user);
 }

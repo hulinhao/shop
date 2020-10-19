@@ -2,12 +2,11 @@ package com.ruoyi.service.impl;
 
 import java.util.List;
 import com.ruoyi.common.utils.DateUtils;
-import com.ruoyi.mapper.MapperTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.mapper.JcProductMapper;
 import com.ruoyi.domain.JcProduct;
-import com.ruoyi.service.IJcProductService;
+import com.ruoyi.service.JcProductService;
 import com.ruoyi.common.core.text.Convert;
 
 /**
@@ -17,12 +16,10 @@ import com.ruoyi.common.core.text.Convert;
  * @date 2020-10-12
  */
 @Service
-public class JcProductServiceImpl implements IJcProductService 
+public class JcProductServiceImpl implements JcProductService
 {
     @Autowired
     private JcProductMapper jcProductMapper;
-    @Autowired
-    private MapperTest mapperTest;
     /**
      *
      * @return
