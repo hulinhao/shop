@@ -18,7 +18,7 @@ public class WxAuthInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 验证小程序用户是否已经登录，是否登录过期
-        String token = request.getHeader(ShopConstant.WX_TOKEN);
+        String token = request.getHeader(ShopConstant.APPLET_TOKEN);
 
 
 

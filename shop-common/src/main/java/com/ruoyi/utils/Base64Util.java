@@ -1,6 +1,7 @@
 package com.ruoyi.utils;
 
 
+import com.ruoyi.constant.ShopConstant;
 import org.apache.commons.lang3.StringUtils;
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
@@ -68,4 +69,8 @@ public class Base64Util {
         }
     }
 
+//    public static void main(String[] args) {
+//        String s = Base64Util.decodeBase64String("eyJuYW1lIjoi5oWi5oWi44CCIiwiaWQiOjMsImV4cGlyZXNUaW1lIjoxNjAzMzU0MDg4NzczfQ==dG9rZW5fc2FsdA==", ShopConstant.APPLET_TOKEN_SALT);
+//        System.out.println(s);
+//    }
 }

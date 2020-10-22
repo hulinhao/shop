@@ -1,6 +1,9 @@
 package com.ruoyi.service;
 
+import com.ruoyi.domain.CartVo;
 import com.ruoyi.domain.JcUser;
+
+import java.util.List;
 
 /**
  * TODO
@@ -11,4 +14,6 @@ import com.ruoyi.domain.JcUser;
 public interface AppletService {
 
     JcUser login(JcUser user);
+
+    List<CartVo> getCartByUserId(Long userId);
 }

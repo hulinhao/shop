@@ -11,7 +11,6 @@ import lombok.Getter;
 public class ShopConstant {
 
     /** wx小程序 **/
-    public static final String WX_TOKEN = "token";
-
-
+    public static String APPLET_TOKEN = "token";
+    public static String APPLET_TOKEN_SALT = "token_salt";
 }

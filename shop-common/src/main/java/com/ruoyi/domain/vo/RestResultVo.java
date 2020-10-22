@@ -3,6 +3,8 @@ package com.ruoyi.domain.vo;
 import com.ruoyi.enums.RestEnum;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * TODO
  *
@@ -11,29 +13,36 @@ import lombok.Data;
  * 接口通用返回对象
  */
 @Data
-public class RestResultVo {
+public class RestResultVo<T> {
     private String code;
     private String msg;
-    private Object data;
+    private T data;
 
-    public static RestResultVo fail(){
+    public static RestResultVo FAIL(){
         RestResultVo restResultVo = new RestResultVo();
         restResultVo.setCode(RestEnum.FAIL.getCode());
-        restResultVo.setCode(RestEnum.FAIL.getMsg());
+        restResultVo.setMsg(RestEnum.FAIL.getMsg());
         return restResultVo;
     }
 
-    public static RestResultVo error(){
+    public static RestResultVo ERROR(){
         RestResultVo restResultVo = new RestResultVo();
         restResultVo.setCode(RestEnum.ERROR.getCode());
-        restResultVo.setCode(RestEnum.ERROR.getMsg());
+        restResultVo.setMsg(RestEnum.ERROR.getMsg());
         return restResultVo;
     }
 
-    public static RestResultVo success(Object data){
+    public static RestResultVo SUCCESS(){
         RestResultVo restResultVo = new RestResultVo();
         restResultVo.setCode(RestEnum.SUCCESS.getCode());
-        restResultVo.setCode(RestEnum.SUCCESS.getMsg());
+        restResultVo.setMsg(RestEnum.SUCCESS.getMsg());
+        return restResultVo;
+    }
+
+    public static <E> RestResultVo SUCCESS(E data){
+        RestResultVo restResultVo = new RestResultVo();
+        restResultVo.setCode(RestEnum.SUCCESS.getCode());
+        restResultVo.setMsg(RestEnum.SUCCESS.getMsg());
         restResultVo.setData(data);
         return restResultVo;
     }

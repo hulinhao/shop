@@ -1,7 +1,7 @@
 package com.ruoyi.web.controller.api;
 
+import com.ruoyi.constant.ShopConstant;
 import com.ruoyi.domain.JcUser;
-import com.ruoyi.enums.RestEnum;
 import com.ruoyi.service.AppletService;
 import com.ruoyi.utils.AesCbcUtil;
 import com.ruoyi.utils.Base64Util;
@@ -24,7 +24,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/appletApi/weixin")
 @Slf4j
-public class WxApi {
+public class WeixinApi {
 
     @Resource
     private AppletService appletService;
@@ -105,7 +105,7 @@ public class WxApi {
                 JcUser loginUser = appletService.login(user);
                 map.put("user",loginUser);
                 map.put("token",createToken(loginUser));
-
+                log.info("【微信登录】用户[{}]登录成功,id:{}。",loginUser.getName(),loginUser.getId());
             } else {
                 map.put("status", FAIL);
                 map.put("msg", "解密失败");
@@ -116,7 +116,6 @@ public class WxApi {
             log.info(e.getMessage());
             e.printStackTrace();
         }
-        log.info(map.toString());
         return map;
     }
 
@@ -128,6 +127,6 @@ public class WxApi {
         map.put("id",user.getId());
         map.put("name",user.getName());
         map.put("expiresTime",new Date().getTime() + 30*60*1000);
-        return Base64Util.encodeBase64String(com.alibaba.fastjson.JSONObject.toJSONString(map), RestEnum.APPLET_TOKEN_SALT);
+        return Base64Util.encodeBase64String(com.alibaba.fastjson.JSONObject.toJSONString(map), ShopConstant.APPLET_TOKEN_SALT);
     }
 }
