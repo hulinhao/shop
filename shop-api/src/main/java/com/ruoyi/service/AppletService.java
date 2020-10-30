@@ -1,7 +1,6 @@
 package com.ruoyi.service;
 
-import com.ruoyi.domain.CartVo;
-import com.ruoyi.domain.JcUser;
+import com.ruoyi.domain.*;
 
 import java.util.List;
 
@@ -13,7 +12,42 @@ import java.util.List;
  */
 public interface AppletService {
 
+    /**
+     * 登录
+     * @param user
+     * @return
+     */
     JcUser login(JcUser user);
 
+    /**
+     * 购物车
+     * @param userId
+     * @return
+     */
     List<CartVo> getCartByUserId(Long userId);
+
+    /**
+     * 查询首页  每个类型显示3个产品
+     * @return
+     */
+    List<IndexVo> getIndex();
+
+    /**
+     * 查询所有商品
+     * @return
+     */
+    List<ProductVo> getProductByTypeId(Long typeId);
+
+    /**
+     * 查询所有商品类型
+     * @return
+     */
+    List<JcProductType> getType();
+
+    /**
+     * 查询商品详情
+     * @param pId
+     * @return
+     */
+    ProductVo getDetail(Long pId);
 }

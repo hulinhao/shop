@@ -1,9 +1,14 @@
 package com.ruoyi.web.controller.api;
 
+import com.ruoyi.domain.IndexVo;
 import com.ruoyi.domain.vo.RestResultVo;
+import com.ruoyi.service.AppletService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * TODO
@@ -15,10 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("appletApi/index/")
 public class IndexApi extends BaseApi{
 
-    @RequestMapping("list")
-    @ResponseBody
-    public RestResultVo getindex(){
+    @Resource
+    private AppletService appletService;
 
-        return RestResultVo.SUCCESS();
+    @RequestMapping("list")
+    public RestResultVo<List<IndexVo>> getIndex(){
+        List<IndexVo> list =  appletService.getIndex();
+
+        return RestResultVo.SUCCESS(list);
     }
 }
