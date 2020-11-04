@@ -1,7 +1,10 @@
 package com.ruoyi.service.impl;
 
 import com.ruoyi.domain.*;
+import com.ruoyi.domain.vo.RestResultVo;
 import com.ruoyi.mapper.AppletMapper;
+import com.ruoyi.mapper.JcCartMapper;
+import com.ruoyi.mapper.JcProductAttrMapper;
 import com.ruoyi.mapper.JcUserMapper;
 import com.ruoyi.service.AppletService;
 import org.springframework.stereotype.Service;
@@ -25,6 +28,8 @@ public class AppletServiceImpl implements AppletService {
     private JcUserMapper userMapper;
     @Resource
     private AppletMapper appletMapper;
+    @Resource
+    private JcCartMapper cartMapper;
 
     @Override
     public JcUser login(JcUser user) {
@@ -83,5 +88,21 @@ public class AppletServiceImpl implements AppletService {
         List<ProductVo.PAttr> attrs = appletMapper.getPattr(pId);
         productVo.setPAttrs(attrs);
         return productVo;
+    }
+
+    @Override
+    public RestResultVo addCart(Long pId, Long attrId, Long num,Long userId) {
+        JcCart cart = new JcCart();
+        cart.setProductId(pId);
+        cart.setProductAttrId(attrId);
+        cart.setNumber(num);
+        cart.setDflag(0L);
+        cart.setCreateTime(new Date());
+        cart.setUpdateTime(new Date());
+        cart.setUserId(userId);
+        if (cartMapper.insertJcCart(cart)>0)
+            return RestResultVo.SUCCESS();
+
+        return RestResultVo.FAIL();
     }
 }

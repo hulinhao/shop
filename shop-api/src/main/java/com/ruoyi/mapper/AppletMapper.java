@@ -40,6 +40,6 @@ public interface AppletMapper {
             " and  p.id= #{id} GROUP BY p.id ORDER BY p.`status`,pa.discount_price "})
     ProductVo getProductById(Long id);
 
-    @Select({"SELECT * from jc_product_attr where product_id = #{pId}"})
+    @Select({"SELECT * from jc_product_attr where product_id = #{pId} order by discount_price asc"})
     List<ProductVo.PAttr> getPattr(Long pId);
  }

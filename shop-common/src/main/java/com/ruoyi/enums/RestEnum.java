@@ -16,6 +16,7 @@ public enum RestEnum {
     LOG_OUT("S0003","未登录"),
     EXPRIED_TOKEN("S0004","登录过期"),
     PARSE_ERROR("S0005","token解析错误"),
+    PARAM_ERROR("S0006","参数错误"),
     ;
 
     RestEnum(String code, String msg) {

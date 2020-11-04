@@ -1,6 +1,7 @@
 package com.ruoyi.service;
 
 import com.ruoyi.domain.*;
+import com.ruoyi.domain.vo.RestResultVo;
 
 import java.util.List;
 
@@ -50,4 +51,6 @@ public interface AppletService {
      * @return
      */
     ProductVo getDetail(Long pId);
+
+    RestResultVo addCart(Long pId,Long attrId,Long num,Long userId);
 }

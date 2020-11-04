@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.mapper.JcProductAttrMapper">
+
+    <resultMap type="JcProductAttr" id="JcProductAttrResult">
+        <result property="id"    column="id"    />
+        <result property="productId"    column="product_id"    />
+        <result property="color"    column="color"    />
+        <result property="size"    column="size"    />
+        <result property="originalPrice"    column="original_price"    />
+        <result property="discountPrice"    column="discount_price"    />
+        <result property="discount"    column="discount"    />
+        <result property="inventory"    column="inventory"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectJcProductAttrVo">
+        select id, product_id, color, size, original_price, discount_price, discount, inventory, create_time, update_time, remark from jc_product_attr
+    </sql>
+
+    <select id="selectJcProductAttrList" parameterType="JcProductAttr" resultMap="JcProductAttrResult">
+        <include refid="selectJcProductAttrVo"/>
+        <where>
+            <if test="productId != null "> and product_id = #{productId}</if>
+            <if test="color != null  and color != ''"> and color = #{color}</if>
+            <if test="size != null  and size != ''"> and size = #{size}</if>
+            <if test="originalPrice != null "> and original_price = #{originalPrice}</if>
+            <if test="discountPrice != null "> and discount_price = #{discountPrice}</if>
+            <if test="discount != null "> and discount = #{discount}</if>
+            <if test="inventory != null "> and inventory = #{inventory}</if>
+        </where>
+    </select>
+
+    <select id="selectJcProductAttrById" parameterType="Long" resultMap="JcProductAttrResult">
+        <include refid="selectJcProductAttrVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertJcProductAttr" parameterType="JcProductAttr" useGeneratedKeys="true" keyProperty="id">
+        insert into jc_product_attr
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="productId != null">product_id,</if>
+            <if test="color != null">color,</if>
+            <if test="size != null">size,</if>
+            <if test="originalPrice != null">original_price,</if>
+            <if test="discountPrice != null">discount_price,</if>
+            <if test="discount != null">discount,</if>
+            <if test="inventory != null">inventory,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productId != null">#{productId},</if>
+            <if test="color != null">#{color},</if>
+            <if test="size != null">#{size},</if>
+            <if test="originalPrice != null">#{originalPrice},</if>
+            <if test="discountPrice != null">#{discountPrice},</if>
+            <if test="discount != null">#{discount},</if>
+            <if test="inventory != null">#{inventory},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+        </trim>
+    </insert>
+
+    <update id="updateJcProductAttr" parameterType="JcProductAttr">
+        update jc_product_attr
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="productId != null">product_id = #{productId},</if>
+            <if test="color != null">color = #{color},</if>
+            <if test="size != null">size = #{size},</if>
+            <if test="originalPrice != null">original_price = #{originalPrice},</if>
+            <if test="discountPrice != null">discount_price = #{discountPrice},</if>
+            <if test="discount != null">discount = #{discount},</if>
+            <if test="inventory != null">inventory = #{inventory},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteJcProductAttrById" parameterType="Long">
+        delete from jc_product_attr where id = #{id}
+    </delete>
+
+    <delete id="deleteJcProductAttrByIds" parameterType="String">
+        delete from jc_product_attr where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

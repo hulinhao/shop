@@ -32,6 +32,13 @@ public class RestResultVo<T> {
         return restResultVo;
     }
 
+    public static RestResultVo PARAM_ERROR(){
+        RestResultVo restResultVo = new RestResultVo();
+        restResultVo.setCode(RestEnum.PARAM_ERROR.getCode());
+        restResultVo.setMsg(RestEnum.PARAM_ERROR.getMsg());
+        return restResultVo;
+    }
+
     public static RestResultVo SUCCESS(){
         RestResultVo restResultVo = new RestResultVo();
         restResultVo.setCode(RestEnum.SUCCESS.getCode());

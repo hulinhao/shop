@@ -8,8 +8,8 @@ public class CommUtil {
 
     public static boolean isNull(Object data){
         if(data == null || data.toString().length() == 0 ||"".equals(data.toString()))
-            return false;
-        return true;
+            return true;
+        return false;
     }
 
 }
