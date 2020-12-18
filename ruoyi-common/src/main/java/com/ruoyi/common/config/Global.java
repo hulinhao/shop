@@ -18,6 +18,9 @@ public class Global
     /** 版本 */
     private static String version;
 
+    private static String url;
+    private static String email;
+
     /** 版权年份 */
     private static String copyrightYear;
 
@@ -33,6 +36,22 @@ public class Global
     public static String getName()
     {
         return name;
+    }
+
+    public static String getUrl() {
+        return url;
+    }
+
+    public static void setUrl(String url) {
+        Global.url = url;
+    }
+
+    public static String getEmail() {
+        return email;
+    }
+
+    public static void setEmail(String email) {
+        Global.email = email;
     }
 
     public void setName(String name)

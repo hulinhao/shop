@@ -20,10 +20,10 @@ import java.util.List;
  * @date 2019/7/26 17:03
  */
 @RestController
-@RequestMapping("appletApi/")
+@RequestMapping("api/")
 //标注swagger管理此controller 前端访问页面http://localhost:8081/swagger-ui.html
 @EnableSwagger2
-@Api(value = "静态数据接口",description = "提供静态数据,供前端调试",tags = { "Api" })
+@Api(value = "静态数据接口",description = "提供静态数据,供前端调试",tags = { "MyApi" })
 public class MyApi {
 
     @ApiOperation(value = "店铺信息",notes = "index", produces = "application/json; charset=utf-8")
