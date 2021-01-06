@@ -10,7 +10,7 @@ import tk.mybatis.mapper.common.Mapper;
  * @author hlinhao Hu
  * @date 2020-11-04
  */
-public interface JcCartMapper extends Mapper<JcCart>
+public interface JcCartMapper
 {
     /**
      * 查询购物车

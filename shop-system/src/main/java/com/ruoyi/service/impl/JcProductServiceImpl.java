@@ -1,7 +1,12 @@
 package com.ruoyi.service.impl;
 
 import java.util.List;
+
+import com.ruoyi.common.core.page.PageDomain;
+import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.domain.bo.ProductInfoBo;
+import com.ruoyi.domain.vo.ProductInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.mapper.JcProductMapper;
@@ -20,21 +25,6 @@ public class JcProductServiceImpl implements JcProductService
 {
     @Autowired
     private JcProductMapper jcProductMapper;
-    /**
-     *
-     * @return
-     */
-    @Override
-    public JcProduct  getProduct(Long id){
-
-        // 这是Tkmybatis工具，不需要写sql和接口。直接继承Mapper就可以获取一些基本的查询方法
-        JcProduct j = new JcProduct();
-        j.setId(1L);
-        List<JcProduct> list = jcProductMapper.select(j);
-
-        //这是自定义sql 添加注解方法
-        return jcProductMapper.selectJcProductById(id);
-    }
 
     /**
      * 查询商品
@@ -109,4 +99,11 @@ public class JcProductServiceImpl implements JcProductService
     {
         return jcProductMapper.deleteJcProductById(id);
     }
+
+    @Override
+    public TableDataInfo getProductInfo(ProductInfoBo productInfoBo, PageDomain pageDomain) {
+        List<ProductInfoVo> list = jcProductMapper.getProductInfo(productInfoBo,(pageDomain.getPageNum()-1)*pageDomain.getPageSize(),pageDomain.getPageSize());
+        return null;
+    }
+
 }

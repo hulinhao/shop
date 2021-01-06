@@ -1,7 +1,11 @@
 package com.ruoyi.service;
 
 import java.util.List;
+
+import com.ruoyi.common.core.page.PageDomain;
+import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.domain.JcProduct;
+import com.ruoyi.domain.bo.ProductInfoBo;
 
 /**
  * 商品Service接口
@@ -11,12 +15,6 @@ import com.ruoyi.domain.JcProduct;
  */
 public interface JcProductService
 {
-
-
-    /**
-     * @return
-     */
-    JcProduct  getProduct(Long id);
 
     /**
      * 查询商品
@@ -65,4 +63,6 @@ public interface JcProductService
      * @return 结果
      */
     public int deleteJcProductById(Long id);
+
+    public TableDataInfo getProductInfo(ProductInfoBo productInfoBo, PageDomain pageDomain);
 }

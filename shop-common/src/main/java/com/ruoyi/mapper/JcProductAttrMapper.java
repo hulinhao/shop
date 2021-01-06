@@ -12,7 +12,7 @@ import tk.mybatis.mapper.common.Mapper;
  * @author hlinhao Hu
  * @date 2020-11-04
  */
-public interface JcProductAttrMapper  extends Mapper<JcProductAttr>
+public interface JcProductAttrMapper
 {
     /**
      * 查询商品属性
