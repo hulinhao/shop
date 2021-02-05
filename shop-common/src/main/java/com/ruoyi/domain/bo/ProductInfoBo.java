@@ -16,5 +16,7 @@ public class ProductInfoBo {
     private String pName;
     private String pNo;
     private Integer pStatus;
-    private Integer pType;
+    private String pTypeCode;
+    
+    
 }

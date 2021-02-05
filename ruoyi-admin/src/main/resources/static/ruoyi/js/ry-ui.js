@@ -349,7 +349,7 @@ var table = {
                     search.isAsc = params.order;
     		        return search;
     		    }
-    		    if($.common.isNotEmpty(tableId)){
+    		    if($.common.isNotEmpty(tableId)){ 
     				$("#" + tableId).bootstrapTable('refresh', params);
     			} else{
     				$("#" + table.options.id).bootstrapTable('refresh', params);
@@ -358,10 +358,12 @@ var table = {
     		// 导出数据
     		exportExcel: function(formId) {
     			table.set();
+    			
     			$.modal.confirm("确定导出所有" + table.options.modalName + "吗？", function() {
 	    			var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
 	    			var params = $("#" + table.options.id).bootstrapTable('getOptions');
 	    			var dataParam = $("#" + currentId).serializeArray();
+	    			
 	    			dataParam.push({ "name": "orderByColumn", "value": params.sortName });
 	    			dataParam.push({ "name": "isAsc", "value": params.sortOrder });
 	    			$.modal.loading("正在导出数据，请稍后...");

@@ -3,7 +3,6 @@ package com.ruoyi.web.controller.backstage;
 import java.util.List;
 
 
-import com.ruoyi.service.AppletService;
 import com.ruoyi.service.JcUserService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;

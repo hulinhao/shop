@@ -4,7 +4,6 @@ import com.ruoyi.domain.*;
 import com.ruoyi.domain.vo.RestResultVo;
 import com.ruoyi.mapper.AppletMapper;
 import com.ruoyi.mapper.JcCartMapper;
-import com.ruoyi.mapper.JcProductAttrMapper;
 import com.ruoyi.mapper.JcUserMapper;
 import com.ruoyi.service.AppletService;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,6 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * TODO

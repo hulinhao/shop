@@ -25,11 +25,10 @@ public interface JcProductMapper
             " from jc_product p LEFT JOIN jc_product_type t on p.type = t.id ",
             " where 1=1",
 
-            "  p.`name` like CONCAT('%',#{productInfoBo.pName},'%') and  p.`status` = #{productInfoBo.pStatus}",
-            " and p.product_no = #{productInfoBo.pNo} and t.id = #{productInfoBo.pType}",
-            " ORDER BY p.update_time  limit #{start},#{size}"
+            "  p.`name` like CONCAT('%',#{pName},'%') and  p.`status` = #{pStatus}",
+            " and p.product_no = #{pNo} and t.code = #{pTypeCode}"            
            })
-    List<ProductInfoVo> getProductInfo(ProductInfoBo productInfoBo,int start,int size);
+    List<ProductInfoVo> getProductInfo(ProductInfoBo productInfoBo);
 
     /**
      * 查询商品

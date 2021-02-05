@@ -3,10 +3,10 @@ package com.ruoyi.service.impl;
 import java.util.List;
 import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.mapper.JcUserMapper;
+import com.ruoyi.service.JcUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.domain.JcUser;
-import com.ruoyi.service.JcUserService;
 import com.ruoyi.common.core.text.Convert;
 
 /**

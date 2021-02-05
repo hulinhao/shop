@@ -11,32 +11,8 @@
                     <div class="select-list">
                         <ul>
                             <li>
-                                <label>手机号：</label>
-                                <input type="text" name="wxOpenid"/>
-                            </li>
-                            <li>
                                 <label>微信昵称：</label>
                                 <input type="text" name="wxNickname"/>
-                            </li>
-                            <li>
-                                <label>微信图片地址：</label>
-                                <input type="text" name="wxAvatarUrl"/>
-                            </li>
-                            <li>
-                                <label>性别：0：女 1：男：</label>
-                                <input type="text" name="wxGender"/>
-                            </li>
-                            <li>
-                                <label>国家：</label>
-                                <input type="text" name="wxCountry"/>
-                            </li>
-                            <li>
-                                <label>省份：</label>
-                                <input type="text" name="wxProvince"/>
-                            </li>
-                            <li>
-                                <label>城市：</label>
-                                <input type="text" name="wxCity"/>
                             </li>
                             <li>
                                 <label>姓名：</label>
@@ -97,20 +73,26 @@
                     visible: false
                 },
                 {
-                    field: 'wxOpenid',
-                    title: '手机号'
-                },
-                {
                     field: 'wxNickname',
                     title: '微信昵称'
                 },
                 {
                     field: 'wxAvatarUrl',
-                    title: '微信图片地址'
+                    title: '微信图像',
+                    formatter:function (value,row,index) {                    
+                        return '<img src="'+value+'" height="50%" ></img>'
+                    }
                 },
                 {
                     field: 'wxGender',
-                    title: '性别：0：女 1：男'
+                    title: '性别',
+                    formatter:function (value,row,index) {
+                        if(value == 0)
+                            return '女';
+                        else if(value == 1)
+                            return '男';
+                        else return '未知';
+                    }
                 },
                 {
                     field: 'wxCountry',

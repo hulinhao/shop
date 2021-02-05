@@ -6,6 +6,7 @@ import com.ruoyi.common.core.page.PageDomain;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.domain.JcProduct;
 import com.ruoyi.domain.bo.ProductInfoBo;
+import com.ruoyi.domain.vo.ProductInfoVo;
 
 /**
  * 商品Service接口
@@ -64,5 +65,5 @@ public interface JcProductService
      */
     public int deleteJcProductById(Long id);
 
-    public TableDataInfo getProductInfo(ProductInfoBo productInfoBo, PageDomain pageDomain);
+    public List<ProductInfoVo> getProductInfo(ProductInfoBo productInfoBo);
 }

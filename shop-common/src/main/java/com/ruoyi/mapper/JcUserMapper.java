@@ -11,7 +11,7 @@ import tk.mybatis.mapper.common.Mapper;
  * @author hlinhao Hu
  * @date 2020-10-19
  */
-public interface JcUserMapper
+public interface JcUserMapper extends Mapper<JcUser>
 {
     /**
      * 查询用户

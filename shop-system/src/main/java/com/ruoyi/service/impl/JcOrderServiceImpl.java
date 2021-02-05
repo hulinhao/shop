@@ -2,6 +2,7 @@ package com.ruoyi.service.impl;
 
 import java.util.List;
 import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.service.IJcOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -10,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ruoyi.domain.JcOrderDetail;
 import com.ruoyi.mapper.JcOrderMapper;
 import com.ruoyi.domain.JcOrder;
-import com.ruoyi.service.IJcOrderService;
 import com.ruoyi.common.core.text.Convert;
 
 /**

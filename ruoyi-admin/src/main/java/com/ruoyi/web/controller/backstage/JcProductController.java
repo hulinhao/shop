@@ -3,6 +3,7 @@ package com.ruoyi.web.controller.backstage;
 import java.util.List;
 
 import com.ruoyi.domain.bo.ProductInfoBo;
+import com.ruoyi.domain.vo.ProductInfoVo;
 import com.ruoyi.service.JcProductService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,10 +46,10 @@ public class JcProductController extends BaseController
     @RequiresPermissions("system:product:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(JcProduct jcProduct)
+    public TableDataInfo list(ProductInfoBo jcProduct)
     {
         startPage();
-        List<JcProduct> list = jcProductService.selectJcProductList(jcProduct);
+        List<ProductInfoVo> list = jcProductService.getProductInfo(jcProduct);
         return getDataTable(list);
     }
 
@@ -120,12 +121,5 @@ public class JcProductController extends BaseController
     {
         return toAjax(jcProductService.deleteJcProductByIds(ids));
     }
-
-
-    @PostMapping( "/getProductInfo")
-    @ResponseBody
-    public TableDataInfo getProductInfo(@RequestBody ProductInfoBo productInfoBo){
-
-        return null;
-    }
+    
 }

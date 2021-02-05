@@ -19,18 +19,14 @@
                                 <input type="text" name="name"/>
                             </li>
                             <li>
-                                <label>文章宣传：</label>
-                                <input type="text" name="content"/>
-                            </li>
-                            <li>
-                                <label>类型： </label>
-                                <select name="type" th:with="type=${@dict.getType('jc_product_type')}">
+                                <label>类型：</label>
+                                <select name="pTypeCode" th:with="type=${@baseSelect.getProductType()}">
                                     <option value="">所有</option>
-                                    <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+                                    <option th:each="t : ${type}" th:text="${t.name}" th:value="${t.code}"></option>
                                 </select>
                             </li>
                             <li>
-                                <label>商品状态： </label>
+                                <label>商品状态：</label>
                                 <select name="status" th:with="type=${@dict.getType('jc_product_status')}">
                                     <option value="">所有</option>
                                     <option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
@@ -86,22 +82,33 @@
                 {
                     field: 'id',
                     title: '主键id',
+                    align: 'center',
                     visible: false
                 },
                 {
                     field: 'productNo',
+                    align: 'center',
                     title: '商品编号'
                 },
                 {
                     field: 'name',
+                    align: 'center',
                     title: '商品名称'
                 },
                 {
                     field: 'content',
-                    title: '文章宣传'
+                    align: 'center',
+                    title: '文章宣传',
+                    formatter:function (value,row,index) {
+                        if(value != null && value.length>12){
+                            return value.substring(0,11) + '...';
+                        }
+                        return value;
+                    }
                 },
                 {
                     field: 'type',
+                    align: 'center',
                     title: '类型',
                     formatter: function(value, row, index) {
                         return $.table.selectDictLabel(typeDatas, value);
@@ -109,6 +116,7 @@
                 },
                 {
                     field: 'status',
+                    align: 'center',
                     title: '商品状态',
                     formatter: function(value, row, index) {
                         return $.table.selectDictLabel(statusDatas, value);
@@ -116,7 +124,14 @@
                 },
                 {
                     field: 'remark',
-                    title: '备注'
+                    align: 'center',
+                    title: '备注',
+                    formatter:function (value,row,index) {
+                        if(value !=null && value.length>12){
+                            return value.substring(0,11) + '...';
+                        }
+                        return value;
+                    }
                 },
                 {
                     title: '操作',

@@ -7,11 +7,11 @@ import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.domain.bo.ProductInfoBo;
 import com.ruoyi.domain.vo.ProductInfoVo;
+import com.ruoyi.service.JcProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.mapper.JcProductMapper;
 import com.ruoyi.domain.JcProduct;
-import com.ruoyi.service.JcProductService;
 import com.ruoyi.common.core.text.Convert;
 
 /**
@@ -101,9 +101,9 @@ public class JcProductServiceImpl implements JcProductService
     }
 
     @Override
-    public TableDataInfo getProductInfo(ProductInfoBo productInfoBo, PageDomain pageDomain) {
-        List<ProductInfoVo> list = jcProductMapper.getProductInfo(productInfoBo,(pageDomain.getPageNum()-1)*pageDomain.getPageSize(),pageDomain.getPageSize());
-        return null;
+    public List<ProductInfoVo> getProductInfo(ProductInfoBo productInfoBo) {
+        List<ProductInfoVo> list = jcProductMapper.getProductInfo(productInfoBo);
+        return list;
     }
 
 }
