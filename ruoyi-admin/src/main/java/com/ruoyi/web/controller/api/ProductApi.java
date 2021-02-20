@@ -29,7 +29,7 @@ public class ProductApi extends BaseApi {
     }
 
     @RequestMapping("product")
-    public RestResultVo<List<ProductVo>> getProduct(@RequestParam("typeId")Long typeId){
+    public RestResultVo<List<ProductVo>> getProduct(@RequestParam("typeId")Integer typeId){
         return RestResultVo.SUCCESS(appletService.getProductByTypeId(typeId));
     }
 

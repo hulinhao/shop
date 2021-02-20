@@ -26,20 +26,21 @@ public interface AppletMapper {
     @Select({"SELECT * from jc_product_type ORDER BY remark asc"})
     List<JcProductType> getType();
 
-    @Select({"SELECT p.id,p.product_no productNo,p.name,a.adjunct_path img  from jc_product p LEFT JOIN jc_adjunct a on p.id = a.relation_id" +
-            "  where p.type = #{typeId} and a.relation_type=1 and a.adjunct_type=0 and a.dflag = 0 GROUP BY p.id ORDER BY p.`status` ASC limit 3"})
-    List<IndexVo.ProductInfo> getProductInfoByType(Long typeId);
-
-    @Select({"SELECT p.*,GROUP_CONCAT(a.adjunct_path) img,pa.discount_price minPrice from jc_product p LEFT JOIN jc_adjunct a on p.id = a.relation_id LEFT JOIN jc_product_attr pa on p.id=pa.product_id " +
-            " where p.`status` != 3 and a.relation_type=1 and a.adjunct_type=0 and a.dflag = 0 " +
+    @Select({"SELECT p.*,GROUP_CONCAT(a.adjunct_path) img,pa.discount_price minPrice from jc_product p LEFT JOIN jc_adjunct a on p.id = a.relation_id LEFT JOIN jc_product_attr pa on p.id=pa.product_id ",
+            " where p.`status` != 3 and a.relation_type=1 and a.adjunct_type=0 and a.dflag = 0 ",
             " and  p.type = #{typeId} GROUP BY p.id ORDER BY p.`status`,pa.discount_price "})
-    List<ProductVo> getProduct(Long typeId);
+    List<ProductVo> getProduct(Integer typeId);
 
-    @Select({"SELECT p.*,GROUP_CONCAT(a.adjunct_path) img,pa.discount_price minPrice from jc_product p LEFT JOIN jc_adjunct a on p.id = a.relation_id LEFT JOIN jc_product_attr pa on p.id=pa.product_id " +
-            " where p.`status` != 3 and a.relation_type=1 and a.adjunct_type=0 and a.dflag = 0 " +
+    @Select({"SELECT p.*,GROUP_CONCAT(a.adjunct_path) img,pa.discount_price minPrice from jc_product p LEFT JOIN jc_adjunct a on p.id = a.relation_id LEFT JOIN jc_product_attr pa on p.id=pa.product_id ",
+            " where p.`status` != 3 and a.relation_type=1 and a.adjunct_type=0 and a.dflag = 0 ",
             " and  p.id= #{id} GROUP BY p.id ORDER BY p.`status`,pa.discount_price "})
     ProductVo getProductById(Long id);
 
     @Select({"SELECT * from jc_product_attr where product_id = #{pId} order by discount_price asc"})
     List<ProductVo.PAttr> getPattr(Long pId);
+
+    @Select({"SELECT p.*,GROUP_CONCAT(a.adjunct_path) img,pa.discount_price minPrice from jc_product p LEFT JOIN jc_adjunct a on p.id = a.relation_id LEFT JOIN jc_product_attr pa on p.id=pa.product_id ",
+            " where p.`status` = #{status} and a.relation_type=1 and a.adjunct_type=0 and a.dflag = 0 ",
+            "  GROUP BY p.id limit 1 "})
+    ProductVo getProductByStatus(Integer status);
  }

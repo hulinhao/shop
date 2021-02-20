@@ -18,9 +18,10 @@ public class ProductInfoVo {
     private String pName;
     private String content;
     private Integer type;
-    private Integer tNo;
+    private String tNo;
     private String tName;
     private String tImg;
     private Integer pStatus;
     private String pRemark;
+
 }

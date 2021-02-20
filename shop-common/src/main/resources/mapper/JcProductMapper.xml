@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.mapper.JcProductMapper">
     
-    <resultMap type="JcProduct" id="JcProductResult">
+    <resultMap type="com.ruoyi.domain.JcProduct" id="JcProductResult">
         <result property="id"    column="id"    />
         <result property="productNo"    column="product_no"    />
         <result property="name"    column="name"    />
@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select id, product_no, name, content, type, status, remark, create_time, update_time from jc_product
     </sql>
 
-    <select id="selectJcProductList" parameterType="JcProduct" resultMap="JcProductResult">
+    <select id="selectJcProductList" parameterType="com.ruoyi.domain.JcProduct" resultMap="JcProductResult">
         <include refid="selectJcProductVo"/>
         <where>  
             <if test="productNo != null  and productNo != ''"> and product_no = #{productNo}</if>
@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where id = #{id}
     </select>
         
-    <insert id="insertJcProduct" parameterType="JcProduct" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertJcProduct" parameterType="com.ruoyi.domain.JcProduct" useGeneratedKeys="true" keyProperty="id">
         insert into jc_product
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="productNo != null">product_no,</if>
@@ -60,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
     </insert>
 
-    <update id="updateJcProduct" parameterType="JcProduct">
+    <update id="updateJcProduct" parameterType="com.ruoyi.domain.JcProduct">
         update jc_product
         <trim prefix="SET" suffixOverrides=",">
             <if test="productNo != null">product_no = #{productNo},</if>
@@ -85,5 +85,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             #{id}
         </foreach>
     </delete>
+    
+    <select id="getProductInfo" parameterType="com.ruoyi.domain.bo.ProductInfoBo" resultType="com.ruoyi.domain.vo.ProductInfoVo">
+        SELECT p.id pId,p.product_no pNo,p.`name` pName,p.content content ,
+         p.type type,t.`code` tNo,t.`name` tName,
+         t.img tImg,p.`status` pStatus,p.remark pRemark
+         from jc_product p LEFT JOIN jc_product_type t on p.type = t.id 
+         where 1=1
+         <if test = "pName != null and pName != ''"> and p.`name` like CONCAT('%',#{pName},'%') </if>
+         <if test = "pStatus !=null and pStatus != ''"> and  p.`status` = #{pStatus}</if> 
+         <if test = "pNo != null and pNo != ''"> and p.product_no = #{pNo}</if> 
+         <if test = "pTypeCode != null and pTypeCode != ''"> and t.code = #{pTypeCode}</if>
+    </select>
 
 </mapper>

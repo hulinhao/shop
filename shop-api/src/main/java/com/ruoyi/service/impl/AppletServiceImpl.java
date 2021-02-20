@@ -2,6 +2,7 @@ package com.ruoyi.service.impl;
 
 import com.ruoyi.domain.*;
 import com.ruoyi.domain.vo.RestResultVo;
+import com.ruoyi.enums.ShopEnum;
 import com.ruoyi.mapper.AppletMapper;
 import com.ruoyi.mapper.JcCartMapper;
 import com.ruoyi.mapper.JcUserMapper;
@@ -51,25 +52,19 @@ public class AppletServiceImpl implements AppletService {
     }
 
     @Override
-    public List<IndexVo> getIndex() {
-        List<IndexVo> indexVos = new ArrayList<>();
+    public IndexVo getIndex() {
+        IndexVo indexVo = new IndexVo();
+        //查询爆款产品
+        ProductVo productVo =  appletMapper.getProductByStatus(ShopEnum.product_status.HOT.getCode());
         //查询所有类型
         List<JcProductType> list = appletMapper.getType();
-        for (JcProductType m : list){
-            IndexVo indexVo = new IndexVo();
-            indexVo.setTypeId(m.getId());
-            indexVo.setName(m.getName());
-            indexVo.setImg(m.getImg());
-            //查询商品
-            List<IndexVo.ProductInfo> productVos =  appletMapper.getProductInfoByType(m.getId());
-            indexVo.setPList(productVos);
-            indexVos.add(indexVo);
-        }
-        return indexVos;
+        indexVo.setTypeList(list);
+        indexVo.setProductVo(productVo);
+        return indexVo;
     }
 
     @Override
-    public List<ProductVo> getProductByTypeId(Long typeId) {
+    public List<ProductVo> getProductByTypeId(Integer typeId) {
         return appletMapper.getProduct(typeId);
     }
 

@@ -23,9 +23,8 @@ public class IndexApi extends BaseApi{
     private AppletService appletService;
 
     @RequestMapping("list")
-    public RestResultVo<List<IndexVo>> getIndex(){
-        List<IndexVo> list =  appletService.getIndex();
-
-        return RestResultVo.SUCCESS(list);
+    public RestResultVo<IndexVo> getIndex(){
+        //查询爆款  用于首页展示
+        return RestResultVo.SUCCESS(appletService.getIndex());
     }
 }

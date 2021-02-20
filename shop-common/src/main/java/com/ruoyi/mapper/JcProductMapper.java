@@ -5,7 +5,6 @@ import com.ruoyi.domain.JcProduct;
 import com.ruoyi.domain.bo.ProductInfoBo;
 import com.ruoyi.domain.vo.ProductInfoVo;
 import org.apache.ibatis.annotations.Select;
-import tk.mybatis.mapper.common.Mapper;
 
 /**
  * 商品Mapper接口
@@ -18,17 +17,8 @@ public interface JcProductMapper
 
     @Select("SELECT * from jc_product where id = #{id}")
     JcProduct getJcProductById(Long id);
-
-    @Select({"SELECT p.id pId,p.product_no pNo,p.`name` pName,p.content content ,",
-            " p.type type,t.`code` tNo,t.`name` tName,",
-            " t.img tImg,p.`status` pStatus,p.remark pRemark",
-            " from jc_product p LEFT JOIN jc_product_type t on p.type = t.id ",
-            " where 1=1",
-
-            "  p.`name` like CONCAT('%',#{pName},'%') and  p.`status` = #{pStatus}",
-            " and p.product_no = #{pNo} and t.code = #{pTypeCode}"            
-           })
-    List<ProductInfoVo> getProductInfo(ProductInfoBo productInfoBo);
+    
+    List<ProductInfoVo> getProductInfo(ProductInfoBo productInfoBo); 
 
     /**
      * 查询商品

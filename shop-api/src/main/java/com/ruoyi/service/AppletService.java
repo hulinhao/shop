@@ -28,16 +28,16 @@ public interface AppletService {
     List<CartVo> getCartByUserId(Long userId);
 
     /**
-     * 查询首页  每个类型显示3个产品
+     * 查询爆款产品，首页展示
      * @return
      */
-    List<IndexVo> getIndex();
+    IndexVo getIndex();
 
     /**
      * 查询所有商品
      * @return
      */
-    List<ProductVo> getProductByTypeId(Long typeId);
+    List<ProductVo> getProductByTypeId(Integer typeId);
 
     /**
      * 查询所有商品类型

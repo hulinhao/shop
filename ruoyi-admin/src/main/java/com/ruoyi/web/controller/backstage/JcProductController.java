@@ -95,6 +95,7 @@ public class JcProductController extends BaseController
     public String edit(@PathVariable("id") Long id, ModelMap mmap)
     {
         JcProduct jcProduct = jcProductService.selectJcProductById(id);
+        mmap.put("jcProduct", jcProduct);
         return prefix + "/edit";
     }
 

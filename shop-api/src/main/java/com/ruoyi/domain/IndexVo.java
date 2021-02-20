@@ -12,16 +12,6 @@ import java.util.List;
  */
 @Data
 public class IndexVo {
-    private Long typeId;
-    private String name;
-    private String img;
-    private List<ProductInfo> pList;
-
-    @Data
-   public static class ProductInfo {
-        private Long id;
-        private String productNo;
-        private String name;
-        private String img;
-    }
+    private List<JcProductType> typeList;
+    private ProductVo productVo;
 }
