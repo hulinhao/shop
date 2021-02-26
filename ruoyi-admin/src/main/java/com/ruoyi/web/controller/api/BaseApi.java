@@ -58,7 +58,7 @@ public class BaseApi {
             user.setId(Long.parseLong(map.get("id").toString()));
             user.setName(map.get("name").toString());
             Long expiresTime = Long.parseLong(map.get("expiresTime").toString());
-            if(new Date().getTime()<expiresTime){//登录超时
+            if(new Date().getTime() > expiresTime){//登录超时
 
             }
             resultVo.setCode(RestEnum.SUCCESS.getCode());

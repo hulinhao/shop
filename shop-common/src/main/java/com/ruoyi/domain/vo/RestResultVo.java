@@ -25,6 +25,13 @@ public class RestResultVo<T> {
         return restResultVo;
     }
 
+    public static RestResultVo FAIL(String msg){
+        RestResultVo restResultVo = new RestResultVo();
+        restResultVo.setCode(RestEnum.FAIL.getCode());
+        restResultVo.setMsg(msg);
+        return restResultVo;
+    }
+
     public static RestResultVo ERROR(){
         RestResultVo restResultVo = new RestResultVo();
         restResultVo.setCode(RestEnum.ERROR.getCode());

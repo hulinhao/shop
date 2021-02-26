@@ -18,7 +18,7 @@ import java.util.List;
  * @date 2020/10/27 15:14
  */
 @RestController
-@RequestMapping("appletApi/product/")
+@RequestMapping("appletApi/auth/product/")
 public class ProductApi extends BaseApi {
     @Resource
     private AppletService appletService;

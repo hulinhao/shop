@@ -12,6 +12,7 @@ import java.math.BigDecimal;
  */
 @Data
 public class CartVo {
+    private Long cartId;
     private Long productId;
     private Long attrId;
     private String productNo;

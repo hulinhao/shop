@@ -1,6 +1,7 @@
 package com.ruoyi.service;
 
 import com.ruoyi.domain.*;
+import com.ruoyi.domain.vo.AddressVo;
 import com.ruoyi.domain.vo.RestResultVo;
 
 import java.util.List;
@@ -53,4 +54,12 @@ public interface AppletService {
     ProductVo getDetail(Long pId);
 
     RestResultVo addCart(Long pId,Long attrId,Long num,Long userId);
+
+    RestResultVo updateCart(Long id,Long num);
+    
+    RestResultVo delCart(Long id);
+    
+    RestResultVo clearCart(Long userId);
+
+    List<AddressVo> getAllAddr(Long userId);
 }

@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020/10/21 18:57
  */
 @Controller
-@RestController("appletApi/user/")
+@RestController("appletApi/auth/user/")
 public class UserApi extends BaseApi {
 }

@@ -1,10 +1,12 @@
 package com.ruoyi.service.impl;
 
 import com.ruoyi.domain.*;
+import com.ruoyi.domain.vo.AddressVo;
 import com.ruoyi.domain.vo.RestResultVo;
 import com.ruoyi.enums.ShopEnum;
 import com.ruoyi.mapper.AppletMapper;
 import com.ruoyi.mapper.JcCartMapper;
+import com.ruoyi.mapper.JcUserAddressMapper;
 import com.ruoyi.mapper.JcUserMapper;
 import com.ruoyi.service.AppletService;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,8 @@ public class AppletServiceImpl implements AppletService {
     private AppletMapper appletMapper;
     @Resource
     private JcCartMapper cartMapper;
+    @Resource
+    private JcUserAddressMapper addressMapper;
 
     @Override
     public JcUser login(JcUser user) {
@@ -97,5 +101,50 @@ public class AppletServiceImpl implements AppletService {
             return RestResultVo.SUCCESS();
 
         return RestResultVo.FAIL();
+    }
+
+    @Override
+    public RestResultVo updateCart(Long id, Long num) {
+        JcCart jcCart = cartMapper.selectJcCartById(id);
+        if(jcCart == null)
+            return RestResultVo.FAIL("查无此单");
+        
+        jcCart.setNumber(num);
+        jcCart.setUpdateTime(new Date());
+        
+        return cartMapper.updateJcCart(jcCart)>0?RestResultVo.SUCCESS():RestResultVo.ERROR();
+    }
+
+    @Override
+    public RestResultVo delCart(Long id) {
+        JcCart jcCart = cartMapper.selectJcCartById(id);
+        if(jcCart == null)
+            return RestResultVo.FAIL("查无此单");
+
+        jcCart.setDflag(1L);
+        jcCart.setUpdateTime(new Date());
+        jcCart.setRemark("删除商品");
+        return cartMapper.updateJcCart(jcCart)>0?RestResultVo.SUCCESS():RestResultVo.ERROR();
+    }
+
+    @Override
+    public RestResultVo clearCart(Long userId) {
+        JcCart jcCart = new JcCart();
+        jcCart.setUserId(userId);
+        jcCart.setDflag(0L);
+        List<JcCart> list = cartMapper.selectJcCartList(jcCart);
+        for (JcCart j : list){
+            j.setDflag(1L);
+            j.setUpdateTime(new Date());
+            j.setRemark("清空购物车");
+            cartMapper.updateJcCart(j);
+        }
+        return RestResultVo.SUCCESS();
+    }
+
+    @Override
+    public List<AddressVo> getAllAddr(Long userId) {
+        
+        return appletMapper.getAllAddr(userId);
     }
 }
