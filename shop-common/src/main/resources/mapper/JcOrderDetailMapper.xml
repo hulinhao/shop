@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.mapper.JcOrderDetailMapper">
+
+    <resultMap type="JcOrderDetail" id="JcOrderDetailResult">
+        <result property="id"    column="id"    />
+        <result property="orderId"    column="order_id"    />
+        <result property="productId"    column="product_id"    />
+        <result property="number"    column="number"    />
+        <result property="price"    column="price"    />
+        <result property="name"    column="name"    />
+        <result property="size"    column="size"    />
+        <result property="img"    column="img"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectJcOrderDetailVo">
+        select id, order_id, product_id, number, price, name, size, img, create_time, update_time, remark from jc_order_detail
+    </sql>
+
+    <select id="selectJcOrderDetailList" parameterType="JcOrderDetail" resultMap="JcOrderDetailResult">
+        <include refid="selectJcOrderDetailVo"/>
+        <where>
+            <if test="orderId != null "> and order_id = #{orderId}</if>
+            <if test="productId != null "> and product_id = #{productId}</if>
+            <if test="number != null "> and number = #{number}</if>
+            <if test="price != null "> and price = #{price}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="size != null  and size != ''"> and size = #{size}</if>
+            <if test="img != null  and img != ''"> and img = #{img}</if>
+        </where>
+    </select>
+
+    <select id="selectJcOrderDetailById" parameterType="Long" resultMap="JcOrderDetailResult">
+        <include refid="selectJcOrderDetailVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertJcOrderDetail" parameterType="JcOrderDetail" useGeneratedKeys="true" keyProperty="id">
+        insert into jc_order_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">order_id,</if>
+            <if test="productId != null">product_id,</if>
+            <if test="number != null">number,</if>
+            <if test="price != null">price,</if>
+            <if test="name != null">name,</if>
+            <if test="size != null">size,</if>
+            <if test="img != null">img,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">#{orderId},</if>
+            <if test="productId != null">#{productId},</if>
+            <if test="number != null">#{number},</if>
+            <if test="price != null">#{price},</if>
+            <if test="name != null">#{name},</if>
+            <if test="size != null">#{size},</if>
+            <if test="img != null">#{img},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+        </trim>
+    </insert>
+
+    <update id="updateJcOrderDetail" parameterType="JcOrderDetail">
+        update jc_order_detail
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="orderId != null">order_id = #{orderId},</if>
+            <if test="productId != null">product_id = #{productId},</if>
+            <if test="number != null">number = #{number},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="size != null">size = #{size},</if>
+            <if test="img != null">img = #{img},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteJcOrderDetailById" parameterType="Long">
+        delete from jc_order_detail where id = #{id}
+    </delete>
+
+    <delete id="deleteJcOrderDetailByIds" parameterType="String">
+        delete from jc_order_detail where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

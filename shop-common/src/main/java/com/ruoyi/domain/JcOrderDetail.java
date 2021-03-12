@@ -1,18 +1,21 @@
 package com.ruoyi.domain;
 
 import com.ruoyi.common.core.domain.JcBaseEntity;
+import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
+import java.math.BigDecimal;
+
 /**
  * 订单详情对象 jc_order_detail
- * 
+ *
  * @author hlinhao Hu
- * @date 2021-01-05
+ * @date 2021-03-10
  */
-public class JcOrderDetail extends JcBaseEntity
+public class JcOrderDetail extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
@@ -20,106 +23,120 @@ public class JcOrderDetail extends JcBaseEntity
     private Long id;
 
     /** $column.columnComment */
-    @Excel(name = "备注")
+    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
     private Long orderId;
 
     /** $column.columnComment */
-    @Excel(name = "备注")
+    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
     private Long productId;
-
-    /** $column.columnComment */
-    @Excel(name = "备注")
-    private Long productAttrId;
 
     /** 数量 */
     @Excel(name = "数量")
     private Long number;
 
-    /** 原价 */
-    @Excel(name = "原价")
-    private Long originalPrice;
-
     /** 订单价 */
     @Excel(name = "订单价")
-    private Long orderPrice;
+    private BigDecimal price;
 
-    public void setId(Long id) 
+    /** $column.columnComment */
+    @Excel(name = "订单价")
+    private String name;
+
+    /** $column.columnComment */
+    @Excel(name = "订单价")
+    private String size;
+
+    /** $column.columnComment */
+    @Excel(name = "订单价")
+    private String img;
+
+    public void setId(Long id)
     {
         this.id = id;
     }
 
-    public Long getId() 
+    public Long getId()
     {
         return id;
     }
-    public void setOrderId(Long orderId) 
+    public void setOrderId(Long orderId)
     {
         this.orderId = orderId;
     }
 
-    public Long getOrderId() 
+    public Long getOrderId()
     {
         return orderId;
     }
-    public void setProductId(Long productId) 
+    public void setProductId(Long productId)
     {
         this.productId = productId;
     }
 
-    public Long getProductId() 
+    public Long getProductId()
     {
         return productId;
     }
-    public void setProductAttrId(Long productAttrId) 
-    {
-        this.productAttrId = productAttrId;
-    }
-
-    public Long getProductAttrId() 
-    {
-        return productAttrId;
-    }
-    public void setNumber(Long number) 
+    public void setNumber(Long number)
     {
         this.number = number;
     }
 
-    public Long getNumber() 
+    public Long getNumber()
     {
         return number;
     }
-    public void setOriginalPrice(Long originalPrice) 
+    public void setPrice(BigDecimal price)
     {
-        this.originalPrice = originalPrice;
+        this.price = price;
     }
 
-    public Long getOriginalPrice() 
+    public BigDecimal getPrice()
     {
-        return originalPrice;
+        return price;
     }
-    public void setOrderPrice(Long orderPrice) 
+    public void setName(String name)
     {
-        this.orderPrice = orderPrice;
+        this.name = name;
     }
 
-    public Long getOrderPrice() 
+    public String getName()
     {
-        return orderPrice;
+        return name;
+    }
+    public void setSize(String size)
+    {
+        this.size = size;
+    }
+
+    public String getSize()
+    {
+        return size;
+    }
+    public void setImg(String img)
+    {
+        this.img = img;
+    }
+
+    public String getImg()
+    {
+        return img;
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("id", getId())
-            .append("orderId", getOrderId())
-            .append("productId", getProductId())
-            .append("productAttrId", getProductAttrId())
-            .append("number", getNumber())
-            .append("originalPrice", getOriginalPrice())
-            .append("orderPrice", getOrderPrice())
-            .append("createTime", getCreateTime())
-            .append("updateTime", getUpdateTime())
-            .append("remark", getRemark())
-            .toString();
+                .append("id", getId())
+                .append("orderId", getOrderId())
+                .append("productId", getProductId())
+                .append("number", getNumber())
+                .append("price", getPrice())
+                .append("name", getName())
+                .append("size", getSize())
+                .append("img", getImg())
+                .append("createTime", getCreateTime())
+                .append("updateTime", getUpdateTime())
+                .append("remark", getRemark())
+                .toString();
     }
 }

@@ -18,5 +18,6 @@ public class AddressVo {
     private String province;
     private String detailAddr;
     private String phone;
+    private String name;
     
 }

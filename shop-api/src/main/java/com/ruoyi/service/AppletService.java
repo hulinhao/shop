@@ -62,4 +62,6 @@ public interface AppletService {
     RestResultVo clearCart(Long userId);
 
     List<AddressVo> getAllAddr(Long userId);
+
+    JcOrder createOrder(OrderVo orderVo,JcUser user);
 }

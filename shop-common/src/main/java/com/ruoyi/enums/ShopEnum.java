@@ -22,7 +22,7 @@ public interface   ShopEnum {
     }
     
     @Getter
-    @AllArgsConstructor //0：正常 1：打折 2：售罄 3：下架4:爆款'
+    @AllArgsConstructor 
     enum product_status{
         NORMAL(0,"正常"),
         DISCOUNT(1,"打折"),
@@ -34,4 +34,16 @@ public interface   ShopEnum {
         private String msg;
     }
 
+    @Getter
+    @AllArgsConstructor 
+    enum order_status{
+        CAOGAO(0L,"草稿订单"),
+        DAIZHIFU(1L,"待支付"),
+        XIANSHANGZHIFU(2L,"线上支付"),
+        XIANXIAZHIFU(3L,"线下支付"),
+        QUXIAO(4L,"已取消"),
+        SHANCHU(5L,"已删除");
+        private Long code;
+        private String msg;
+    }
 }

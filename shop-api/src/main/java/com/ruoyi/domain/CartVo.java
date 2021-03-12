@@ -19,7 +19,7 @@ public class CartVo {
     private String poductName;
     private BigDecimal price;
     private String size;
-    private Integer num;
+    private Long num;
     private String img;//图片
     private String brand;
 }

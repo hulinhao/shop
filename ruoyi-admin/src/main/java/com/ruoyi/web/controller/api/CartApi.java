@@ -93,4 +93,5 @@ public class CartApi extends BaseApi {
             return resultVo;
         return appletService.clearCart(resultVo.getData().getId());
     }
+    
 }

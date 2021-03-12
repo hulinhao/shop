@@ -4,12 +4,10 @@ import com.ruoyi.domain.*;
 import com.ruoyi.domain.vo.AddressVo;
 import com.ruoyi.domain.vo.RestResultVo;
 import com.ruoyi.enums.ShopEnum;
-import com.ruoyi.mapper.AppletMapper;
-import com.ruoyi.mapper.JcCartMapper;
-import com.ruoyi.mapper.JcUserAddressMapper;
-import com.ruoyi.mapper.JcUserMapper;
+import com.ruoyi.mapper.*;
 import com.ruoyi.service.AppletService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
@@ -33,6 +31,10 @@ public class AppletServiceImpl implements AppletService {
     private JcCartMapper cartMapper;
     @Resource
     private JcUserAddressMapper addressMapper;
+    @Resource
+    private JcOrderMapper orderMapper;
+    @Resource
+    private JcOrderDetailMapper orderDetailMapper;
 
     @Override
     public JcUser login(JcUser user) {
@@ -147,4 +149,43 @@ public class AppletServiceImpl implements AppletService {
         
         return appletMapper.getAllAddr(userId);
     }
+
+    @Override
+    @Transactional
+    public JcOrder createOrder(OrderVo orderVo,JcUser user) {
+        JcOrder order = new JcOrder();
+        order.setUserId(user.getId());
+        order.setAddress(orderVo.getAddress());
+        order.setName(orderVo.getName());
+        order.setPaidPrice(orderVo.getPaidPrice());
+        order.setPhone(orderVo.getPhone());
+        order.setStatus(ShopEnum.order_status.DAIZHIFU.getCode());
+        order.setRemark(orderVo.getRemark());
+        order.setTime(new Date());
+        order.setCreateTime(new Date());
+        if(orderMapper.insertJcOrder(order)>0){
+            for (CartVo c : orderVo.getPlist()){
+                JcOrderDetail d = new JcOrderDetail();
+                d.setOrderId(order.getId());
+                d.setProductId(c.getProductId());
+                d.setName(c.getPoductName());
+                d.setNumber(c.getNum());
+                d.setImg(c.getImg());
+                d.setPrice(c.getPrice());
+                d.setSize(c.getSize());
+                d.setRemark(order.getRemark());
+                d.setCreateTime(new Date());
+                orderDetailMapper.insertJcOrderDetail(d);
+                //修改购物车商品状态
+                JcCart cart = cartMapper.selectJcCartById(c.getCartId());
+                cart.setUpdateTime(new Date());
+                cart.setRemark("已生成订单");
+                cart.setDflag(2L);
+                cartMapper.updateJcCart(cart);
+            }
+        }
+        return order;
+    }
+
+
 }

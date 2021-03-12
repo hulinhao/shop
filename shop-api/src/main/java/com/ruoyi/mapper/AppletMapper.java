@@ -43,7 +43,7 @@ public interface AppletMapper {
             "  GROUP BY p.id limit 1 "})
     ProductVo getProductByStatus(Integer status);
     
-    @Select({"SELECT a.id id,a.user_id userId,a.city_id cityId,c.cityname area,cc.cityname city,ccc.cityname province,a.detail_addr detailAddr,a.accept_phone phone ",
+    @Select({"SELECT a.id id,a.user_id userId,a.city_id cityId,c.cityname area,cc.cityname city,ccc.cityname province,a.detail_addr detailAddr,a.accept_phone phone,a.accept_name AS name ",
             " from jc_user_address a LEFT JOIN city c on a.city_id = c.id LEFT JOIN city cc on c.pid = cc.id LEFT JOIN city ccc on cc.pid = ccc.id ",
             " where dflag in(0,1) and user_id = #{userId} ORDER BY dflag"})
     List<AddressVo> getAllAddr(Long userId);
